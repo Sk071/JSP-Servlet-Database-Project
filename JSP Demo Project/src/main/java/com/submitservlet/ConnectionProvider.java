@@ -8,9 +8,9 @@ import java.util.logging.Logger;
 
 public class ConnectionProvider {
 	
-	static String URL = "jdbc:mysql://localhost:3306/jspdemoproject";
-    static String user = "root";
-    static String pass = "12345678";
+	static String URL = "jdbc:mysql://${DB_HOST}:3306/jspdemoproject";
+    static String user = "${DB_USER}";
+    static String pass = "${DB_PASS}";
     static Connection con;
 
     public static Connection getDBcon() throws ClassNotFoundException, SQLException {
