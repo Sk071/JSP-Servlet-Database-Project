@@ -33,7 +33,7 @@ spec:
       volumes:
       - name: mysql-data
         persistentVolumeClaim:
-          claimName: jsppvc
+          claimName: ebs-claim
 
 
 
