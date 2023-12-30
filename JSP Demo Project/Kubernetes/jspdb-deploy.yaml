@@ -17,20 +17,28 @@ spec:
       containers:
       - name: jspdb
         image: kubesk071/jspdb:k8s-v1
+        volumeMounts:
+        - name: mysql-data
+          mountPath: /var/lib/mysql
         ports:
         - containerPort: 3306
         env:
         - name: MYSQL_DATABASE
-          value: jspdemoproject            
+          value: jspdemoproject
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: jspdb-secret
               key: password
+      volumes:
+      - name: mysql-data
+        persistentVolumeClaim:
+          claimName: jsppvc
+
+
 
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
